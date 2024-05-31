@@ -250,3 +250,4 @@ C:\Users\kanaka\source\repos\ASP.NET CORE\EmployeeTaskCore\EmployeeTaskCore\obj\
 C:\Users\kanaka\source\repos\ASP.NET CORE\EmployeeTaskCore\EmployeeTaskCore\obj\Debug\net8.0\EmployeeTaskCore.pdb
 C:\Users\kanaka\source\repos\ASP.NET CORE\EmployeeTaskCore\EmployeeTaskCore\obj\Debug\net8.0\EmployeeTaskCore.genruntimeconfig.cache
 C:\Users\kanaka\source\repos\ASP.NET CORE\EmployeeTaskCore\EmployeeTaskCore\obj\Debug\net8.0\ref\EmployeeTaskCore.dll
+C:\Users\kanaka\source\repos\ASP.NET CORE\EmployeeTaskCore\EmployeeTaskCore\obj\Debug\net8.0\EmployeeTaskCore.sourcelink.json

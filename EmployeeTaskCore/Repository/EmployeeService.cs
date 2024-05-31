@@ -74,7 +74,70 @@ namespace CoreTaskEmployee.Repository
         }
 
 
-        
+
+
+
+
+        public string GetEmployeeManagerName(int empId)
+        {
+            string resultingManager = "";
+            var empRoleFind = (from rolemap in dbcontext.EmployeeRoleMap
+                               join role in dbcontext.Role on rolemap.RoleId equals role.RoleId
+                               where rolemap.EmployeeId == empId
+                               select role.RoleName
+                              ).FirstOrDefault();
+
+            string rolename = empRoleFind.ToString();
+
+            if (rolename != "Admin" && rolename != "Manager")
+            {
+                // find manager : managerName
+                resultingManager += "Manager. ";
+
+                var empProjectIdFind = (from projectmap in dbcontext.EmployeeProjectMap
+                                        where projectmap.EmployeeId == empId
+                                        select projectmap.ProjectId
+                                       ).FirstOrDefault();
+
+                int empProjectId = Convert.ToInt32(empProjectIdFind);
+
+                var managerNameFind = (from employee in dbcontext.Employee
+                                       join rolemap in dbcontext.EmployeeRoleMap on employee.EmployeeId equals rolemap.EmployeeId
+                                       join role in dbcontext.Role on rolemap.RoleId equals role.RoleId
+                                       join projectmap in dbcontext.EmployeeProjectMap on employee.EmployeeId equals projectmap.EmployeeId
+                                       join project in dbcontext.Project on projectmap.ProjectId equals project.ProjectId
+                                       where project.ProjectId == empProjectId && role.RoleName == "Manager"
+                                       select employee.EmployeeName
+                                      ).FirstOrDefault();
+
+                string managerName = managerNameFind.ToString();
+
+                resultingManager += managerName;
+
+                return resultingManager;
+
+
+            }
+            else
+            {
+                // find admin : adminName
+                resultingManager += "Admin. ";
+
+                var adminNameFind = (from employee in dbcontext.Employee
+                                     join rolemap in dbcontext.EmployeeRoleMap on employee.EmployeeId equals rolemap.EmployeeId
+                                     join role in dbcontext.Role on rolemap.RoleId equals role.RoleId
+                                     where role.RoleName == "Admin"
+                                     select employee.EmployeeName
+                                    ).FirstOrDefault();
+
+                string adminName = adminNameFind.ToString();
+
+                resultingManager += adminName;
+
+                return resultingManager;
+            }
+        }
+
 
 
 

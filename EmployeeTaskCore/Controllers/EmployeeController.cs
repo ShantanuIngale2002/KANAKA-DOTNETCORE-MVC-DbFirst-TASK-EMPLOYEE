@@ -87,7 +87,15 @@ namespace EmployeeTaskCore.Controllers
 
         public IActionResult ApplyPaidLeave()
         {
-            return View();
+            LeaveApplyModel model = new LeaveApplyModel();
+            string empId = HttpContext.Session.GetString("acquiredID").ToString();
+            int getEmpId = Convert.ToInt32(empId);
+
+            string managerRoleName = employeeRepo.GetEmployeeManagerName(getEmpId);
+
+            model.AppliedTo = managerRoleName;
+
+            return View(model);
         }
 
         [HttpPost]
@@ -112,7 +120,15 @@ namespace EmployeeTaskCore.Controllers
 
         public IActionResult ApplyPaylossLeave()
         {
-            return View();
+            LeaveApplyModel model = new LeaveApplyModel();
+            string empId = HttpContext.Session.GetString("acquiredID").ToString();
+            int getEmpId = Convert.ToInt32(empId);
+
+            string managerRoleName = employeeRepo.GetEmployeeManagerName(getEmpId);
+
+            model.AppliedTo = managerRoleName;
+
+            return View(model);
         }
 
         [HttpPost]

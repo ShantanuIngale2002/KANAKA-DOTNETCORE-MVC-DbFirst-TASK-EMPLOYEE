@@ -15,6 +15,7 @@ namespace CoreTaskEmployee.Repository.Interface
         public bool EmployeePaylossLeaveApply(LeaveApplyModel model, int empID);
         public IEnumerable<EmployeeLeaveHistoryModel> GetEmployeeLeaveHistory(int empID);
 
+        public string GetEmployeeManagerName(int empId);
         public bool GetAdmin(AdminLoginModel model);
         public EmployeeCompleteModel FetchCompleteEmployeeDetails(int emp_id);
         public bool AddEmployee(EmployeeCompleteModel model);

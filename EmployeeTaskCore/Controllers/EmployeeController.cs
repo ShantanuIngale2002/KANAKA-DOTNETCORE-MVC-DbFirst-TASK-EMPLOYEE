@@ -44,11 +44,37 @@ namespace EmployeeTaskCore.Controllers
 
 
 
-        public IActionResult ProjectInformation()
+        public IActionResult EditUsernameAndPassword()
         {
             string empId = HttpContext.Session.GetString("acquiredID").ToString();
             int getEmpId = Convert.ToInt32(empId);
-            EmployeeProjectModel model = employeeRepo.GetEmployeeProjectDetails(getEmpId);
+            EmployeeCredentialModel model = employeeRepo.GetEmployeeCredential(getEmpId);
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult EditUsernameAndPassword(EmployeeCredentialModel model)
+        {
+            bool updated = employeeRepo.UpdateEmployeeCredential(model);
+            if (updated)
+            {
+                return RedirectToAction("DisplayEmployee");
+            }
+            return View();
+        }
+
+
+
+        public IActionResult ProjectInformation()
+        {
+            string acquiredPosition = HttpContext.Session.GetString("acquiredPerson").ToString();
+            if(acquiredPosition == "manager")
+            {
+                return RedirectToAction("ManagerProjectInformation", "Manager");
+            }
+            string empId = HttpContext.Session.GetString("acquiredID").ToString();
+            int getEmpId = Convert.ToInt32(empId);
+            List<EmployeeProjectModel> model = employeeRepo.GetEmployeeProjectDetails(getEmpId);
             return View(model);
         }
 

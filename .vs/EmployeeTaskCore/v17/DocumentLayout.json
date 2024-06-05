@@ -47,8 +47,7 @@
               "RelativeToolTip": "EmployeeTaskCore\\Views\\Employee\\ApplyPaidLeave.cshtml",
               "ViewState": "AQIAABUAAAAAAAAAAAAAACAAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-31T09:35:20.42Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-31T09:35:20.42Z"
             },
             {
               "$type": "Document",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "EmployeeTaskCore\\Repository\\EmployeeService.cs",
               "ViewState": "AQIAAGsAAAAAAAAAAAAiwHkAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T09:34:25.578Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-31T09:34:25.578Z"
             }
           ]
         }

@@ -4,9 +4,9 @@
     ViewData["Title"] = "ApplyPaidLeave";
 }
 
-<h1>ApplyPaidLeave</h1>
-
-<h4>LeaveApplyModel</h4>
+<div class="mt-4 mb-2">
+    <h3 class="">Apply for Paid Leaves</h3>
+</div>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -29,7 +29,10 @@
             </div>
             <div class="form-group">
                 <label>Applied To:</label>
-                <p>@Model.AppliedTo</p>
+                @* <p>@Model.AppliedTo</p> *@
+                <div class="bg-light text-black py-1 px-2 border border-dark rounded text-nowrap">
+                    @Model.AppliedTo
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Apply" class="btn btn-primary" />
@@ -39,6 +42,6 @@
 </div>
 
 <div>
-    <a asp-controller="Employee" asp-action="EmployeeLeave" class="btn btn-info btn-block">Go To Leave</a>
+    <a asp-controller="Employee" asp-action="EmployeeLeave" class="btn btn-info text-nowrap">Go To Leave Section</a>
 </div>
 

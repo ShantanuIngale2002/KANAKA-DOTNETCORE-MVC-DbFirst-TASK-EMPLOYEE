@@ -26,24 +26,35 @@ namespace EmployeeTaskCore.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(EmployeeIdModel model)
+        public IActionResult Login(EmployeeLoginModel model)
         {
             if (ModelState.IsValid)
             {
-                int empId = (int)model.empID;
+                int empId = employeeRepo.FetchEmployeeId(model);
+                if (empId == 0)
+                {
+                    ViewBag.UserNotFound = "User does not exist";
+                    return RedirectToAction("Login", "Home");
+                }
                 var displayModel = employeeRepo.GetEmployee(empId);
                 if (displayModel!=null)
                 {
+                    HttpContext.Session.SetString("Username", displayModel.EmployeeName.ToString());
                     HttpContext.Session.SetString("acquiredID", empId.ToString());
-                    if(displayModel.EmployeeRole != "Admin")
+                    if(displayModel.EmployeeRole == "Admin")
                     {
-                        HttpContext.Session.SetString("acquiredPerson", "employee");
+                        HttpContext.Session.SetString("acquiredPerson", "admin");
+                        return RedirectToAction("AdminDashboard","Admin");
+                    }
+                    else if(displayModel.EmployeeRole == "Manager")
+                    {
+                        HttpContext.Session.SetString("acquiredPerson", "manager");
                         return RedirectToAction("EmployeeDashboard", "Employee");
                     }
                     else
                     {
-                        HttpContext.Session.SetString("acquiredPerson", "admin");
-                        return RedirectToAction("Login","Admin");
+                        HttpContext.Session.SetString("acquiredPerson", "employee");
+                        return RedirectToAction("EmployeeDashboard", "Employee");
                     }
                 }
             }

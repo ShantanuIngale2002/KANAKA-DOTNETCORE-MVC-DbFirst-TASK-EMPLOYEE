@@ -1,22 +1,18 @@
 ﻿@model EmployeeTaskCore.Models.EmployeeProjectModel
 
 @{
-    ViewData["Title"] = "AddNewProject";
+    ViewData["Title"] = "EditProject";
 }
 
 <div class="mt-4 mb-2">
-    <h3 class="">Add New Project</h3>
+    <h3 class="">Edit Project's Information</h3>
 </div>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AddNewProject">
+        <form asp-action="EditProject">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ProjectId" class="control-label"></label>
-                <input asp-for="ProjectId" class="form-control" />
-                <span asp-validation-for="ProjectId" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="ProjectId" />
             <div class="form-group">
                 <label asp-for="ProjectName" class="control-label"></label>
                 <input asp-for="ProjectName" class="form-control" />
@@ -24,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="StartDate" class="control-label"></label>
-                <input asp-for="StartDate" class="form-control" />
+                <input asp-for="StartDate" class="form-control" readonly/>
                 <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -38,13 +34,13 @@
                 <span asp-validation-for="Resources" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="ADD" class="btn btn-primary" />
+                <input type="submit" value="Update" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="CompleteProjectInformation" class="btn btn-secondary">Goto Projects</a>
+    <a asp-action="ManagerProjectInformation" class="btn btn-secondary">Go to Projects</a>
 </div>
 

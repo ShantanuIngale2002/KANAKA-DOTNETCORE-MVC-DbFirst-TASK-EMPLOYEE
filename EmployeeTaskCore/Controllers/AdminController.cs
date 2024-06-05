@@ -28,7 +28,7 @@ namespace EmployeeTaskCore.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(AdminLoginModel model)
+        public IActionResult Login(EmployeeLoginModel model)
         {
             bool proof = employeeRepo.GetAdmin(model);
             if(proof)
